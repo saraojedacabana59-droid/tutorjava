@@ -8,6 +8,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="TutorJava">
 <title>TutorJava</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icono-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
 /* =========================================================
    TutorJava - estilos compartidos
@@ -7242,6 +7245,28 @@ const TJ = (() => {
     });
 })();
 
+</script>
+
+<script>
+/* App offline: guarda TutorJava en el celular la primera vez que se abre con internet */
+(() => {
+    if (!("serviceWorker" in navigator) || !/^https?:$/.test(location.protocol)) return;
+    window.addEventListener("load", () => {
+        try {
+            navigator.serviceWorker.register("./sw.js").then(registro => {
+                const avisar = () => {
+                    try {
+                        if (localStorage.getItem("tutorjava.offline") === "si") return;
+                        localStorage.setItem("tutorjava.offline", "si");
+                    } catch (e) { return; }
+                    TJ.aviso("✅ Listo: TutorJava ya funciona sin internet");
+                };
+                if (registro.active) avisar();
+                else navigator.serviceWorker.ready.then(avisar);
+            }).catch(() => { /* sin modo offline */ });
+        } catch (e) { /* sin modo offline */ }
+    });
+})();
 </script>
 
 </body>

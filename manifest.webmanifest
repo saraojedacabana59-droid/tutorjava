@@ -1,0 +1,17 @@
+{
+    "name": "TutorJava - Pseudocódigo a Java",
+    "short_name": "TutorJava",
+    "description": "Tutor para traducir y comprender pseudocódigo en Java, con juegos y lecciones.",
+    "lang": "es",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f5f7fa",
+    "theme_color": "#2563eb",
+    "icons": [
+        { "src": "icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+        { "src": "icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ]
+}
